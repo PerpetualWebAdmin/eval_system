@@ -213,7 +213,7 @@ export default function CoursesTable({ courses, onCourseAdded }) {
                                 value={formData.course_sem}
                                 onChange={handleChange}
                                 min={1}
-                                max={2}
+                                max={3}
                                 required
                             />
                             <input
@@ -238,7 +238,6 @@ export default function CoursesTable({ courses, onCourseAdded }) {
                                 placeholder="Units (Lecture)"
                                 value={formData.units_lec}
                                 min={0}
-                                max={3}
                                 onChange={handleChange}
                             />
                             <input
@@ -247,7 +246,6 @@ export default function CoursesTable({ courses, onCourseAdded }) {
                                 placeholder="Units (Lab)"
                                 value={formData.units_lab}
                                 min={0}
-                                max={3}
                                 onChange={handleChange}
                             />
                             <input
