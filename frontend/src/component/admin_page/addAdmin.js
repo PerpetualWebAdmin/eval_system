@@ -16,6 +16,7 @@ export default function AddAdmin({ onAdminAdded }) {
     password: "",
     confirmPassword: "",
     role: "admin",
+    dept: "",
   });
   const [error, setError] = useState("");
 
@@ -83,6 +84,7 @@ export default function AddAdmin({ onAdminAdded }) {
         password: "",
         confirmPassword: "",
         role: "admin",
+        dept: ""
       });
       
       // Notify parent component
@@ -213,6 +215,27 @@ export default function AddAdmin({ onAdminAdded }) {
                     value={formData.full_name}
                     onChange={handleChange}
                     placeholder="Enter full name"
+                    style={{
+                      width: "100%",
+                      padding: "8px",
+                      border: "1px solid #ccc",
+                      borderRadius: "4px",
+                      boxSizing: "border-box",
+                    }}
+                    required
+                  />
+                </div>
+
+                <div style={{ marginBottom: "15px" }}>
+                  <label style={{ display: "block", marginBottom: "5px", fontWeight: "500" }}>
+                    Department
+                  </label>
+                  <input
+                    type="text"
+                    name="dept"
+                    value={formData.dept}
+                    onChange={handleChange}
+                    placeholder="Enter Department Name"
                     style={{
                       width: "100%",
                       padding: "8px",

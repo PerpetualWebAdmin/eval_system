@@ -247,6 +247,7 @@ export default function AdminManagement() {
                             <div className={style.rBlock}>
                                 <span>Role: {selectedAdmin?.role ?? "N/A"}</span>
                                 <span>Created: {selectedAdmin?.created_at ? new Date(selectedAdmin.created_at).toLocaleDateString() : "N/A"}</span>
+                                <span>Department: {selectedAdmin?.dept ?? "N/A"}</span>
                             </div>
                         </div>
                     ) : (

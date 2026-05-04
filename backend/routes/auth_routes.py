@@ -29,6 +29,7 @@ class AdminCreateRequest(BaseModel):
     full_name: str
     password: str
     role: str
+    dept: Optional[str] = None
 
 class AdminUpdateRequest(BaseModel):
     username: str
@@ -36,6 +37,7 @@ class AdminUpdateRequest(BaseModel):
     full_name: str
     role: str
     password: Optional[str] = None
+    dept: Optional[str] = None
 
 @router.post("/login")
 def login(credentials: LoginRequest):
@@ -284,7 +286,8 @@ def create_admin(admin_data: AdminCreateRequest):
             "email": admin_data.email,
             "full_name": admin_data.full_name,
             "hashed_password": hashed_password,
-            "role": admin_data.role or "admin"
+            "role": admin_data.role or "admin",
+            "dept": admin_data.dept
         }
         
         result = supabase.table("user_credentials").insert(admin_record).execute()
@@ -295,7 +298,8 @@ def create_admin(admin_data: AdminCreateRequest):
                 "username": admin_data.username,
                 "email": admin_data.email,
                 "full_name": admin_data.full_name,
-                "role": admin_data.role or "admin"
+                "role": admin_data.role or "admin",
+                "dept": admin_data.dept
             }
         }
         
@@ -349,7 +353,8 @@ def update_admin(username: str, admin_data: AdminUpdateRequest):
             "username": admin_data.username,
             "email": admin_data.email,
             "full_name": admin_data.full_name,
-            "role": admin_data.role or "admin"
+            "role": admin_data.role or "admin",
+            "dept": admin_data.dept
         }
         
         # Update password if provided
@@ -371,7 +376,8 @@ def update_admin(username: str, admin_data: AdminUpdateRequest):
                 "username": admin_data.username,
                 "email": admin_data.email,
                 "full_name": admin_data.full_name,
-                "role": admin_data.role or "admin"
+                "role": admin_data.role or "admin",
+                "dept": admin_data.dept
             }
         }
         
@@ -502,7 +508,8 @@ def get_admin_by_name(name: str):
                     "full_name": admin.get("full_name"),
                     "email": admin.get("email"),
                     "role": admin["role"],
-                    "student_id": admin.get("student_id")
+                    "student_id": admin.get("student_id"),
+                    "dept": admin.get("dept"),
                 }
         
         raise HTTPException(

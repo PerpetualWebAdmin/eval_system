@@ -16,6 +16,7 @@ export default function EditAdmin({ admin, onAdminUpdated }) {
     password: "",
     confirmPassword: "",
     role: admin?.role || "admin",
+    dept: admin?.dept,
   });
   const [error, setError] = useState("");
   
@@ -29,6 +30,7 @@ export default function EditAdmin({ admin, onAdminUpdated }) {
         password: "",
         confirmPassword: "",
         role: admin.role || "admin",
+        dept: admin.dept,
       });
     }
   }, [admin]);
@@ -80,6 +82,7 @@ export default function EditAdmin({ admin, onAdminUpdated }) {
         email: formData.email,
         full_name: formData.full_name,
         role: formData.role,
+        dept: formData.dept
       };
 
       // Only include password if user entered one
@@ -224,6 +227,27 @@ export default function EditAdmin({ admin, onAdminUpdated }) {
                     value={formData.full_name}
                     onChange={handleChange}
                     placeholder="Enter full name"
+                    style={{
+                      width: "100%",
+                      padding: "8px",
+                      border: "1px solid #ccc",
+                      borderRadius: "4px",
+                      boxSizing: "border-box",
+                    }}
+                    required
+                  />
+                </div>
+
+                <div style={{ marginBottom: "15px" }}>
+                  <label style={{ display: "block", marginBottom: "5px", fontWeight: "500" }}>
+                    Department:
+                  </label>
+                  <input
+                    type="text"
+                    name="dept"
+                    value={formData.dept}
+                    onChange={handleChange}
+                    placeholder="Enter Department"
                     style={{
                       width: "100%",
                       padding: "8px",
